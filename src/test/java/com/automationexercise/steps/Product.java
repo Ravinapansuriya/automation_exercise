@@ -117,7 +117,7 @@ public class Product {
 
     @Then("Verify first product {string}")
     public void verifyFirstProduct(String pName) {
-        Assert.assertEquals(new ShoppingCartPage().getProductNameFromCart(), pName);
+        Assert.assertEquals(new ShoppingCartPage().getProductNameFromCart(pName), pName);
     }
 
     @And("I increase the quantity {string}")
@@ -147,7 +147,7 @@ public class Product {
 
     @Then("Verify that product is removed from the cart {string}")
     public void verifyThatProductIsRemovedFromTheCart(String text) {
-        Assert.assertEquals(new ShoppingCartPage().getEmptyCartText(), text);
+        Assert.assertEquals(new ShoppingCartPage().getEmptyCartText(text), text);
     }
 
     @Then("Verify that categories are visible on left side bar {string}")
@@ -183,7 +183,7 @@ public class Product {
 
     @Then("I verify the product {string} in shopping cart")
     public void iVerifyTheProductInShoppingCart(String text) {
-        Assert.assertEquals(new ShoppingCartPage().getProductNameFromCart(), text);
+        Assert.assertEquals(new ShoppingCartPage().getProductNameFromCart(text), text);
     }
 
     @And("I enter name {string}")
@@ -227,8 +227,8 @@ public class Product {
     }
 
     @Then("Verify product {string}")
-    public void verifyProduct(String pName) {
-        Assert.assertEquals(new ShoppingCartPage().getProductNameFromCart(), pName);
+    public void verifyProduct(String Name) {
+        Assert.assertEquals(new ShoppingCartPage().getProductNameFromCart(Name), Name);
     }
 
     @And("I should see {string} page title for men")

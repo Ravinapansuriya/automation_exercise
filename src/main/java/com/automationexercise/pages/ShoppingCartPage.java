@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ShoppingCartPage extends Utility {
 
     private static final Logger log = LogManager.getLogger(ShoppingCartPage.class.getName());
@@ -18,6 +20,10 @@ public class ShoppingCartPage extends Utility {
     @CacheLookup
     @FindBy(xpath = "//li[@class='active']")
     WebElement shoppingCartText;
+
+    @CacheLookup
+    @FindBy(xpath = "//td[@class = 'cart_description']/h4/a")
+    List<WebElement> cartProductList;
 
     @CacheLookup
     @FindBy(xpath = "//a[normalize-space()='Proceed To Checkout']")
@@ -49,6 +55,17 @@ public class ShoppingCartPage extends Utility {
         log.info("Getting shopiing cart text : " +shoppingCartText.toString());
         return getTextFromElement(shoppingCartText);
     }
+
+    public String getProductNameFromCart(String pName) {
+        for (WebElement p : cartProductList) {
+            if(p.getText().equalsIgnoreCase(pName)) {
+                log.info("Getting " + pName + " from shopping cart : " + cartProductList.toString());
+                return pName;
+            }
+        }
+        return "Product Not Found";
+    }
+
     public void clickOnProceedToCheckoutButton(){
         clickOnElement(proceedToCheckoutButton);
         log.info("Clicking on procced to checkout button: "+proceedToCheckoutButton.toString());
@@ -61,12 +78,9 @@ public class ShoppingCartPage extends Utility {
         clickOnElement(removeProductButton);
         log.info("Clicking on X to remove product from cart: "+removeProductButton.toString());
     }
-    public String getEmptyCartText(){
+    public String getEmptyCartText(String text){
         log.info("Getting shopping cart is empty text : " +emptyCartText.toString());
         return getTextFromElement(emptyCartText);
     }
-    public String getProductNameFromCart(){
-        log.info("Getting product name from cart : " +productNameInCart);
-        return getTextFromElement(productNameInCart);
-    }
+
 }

@@ -6,11 +6,13 @@ Feature: As a user,
   I should Place Order: Login before Checkout
   I should Place Order: Login before Checkout
 
+  Background:
+    Given I am on homepage and verify the homepage URL
+    When I click on header menu option Signup "Signup / Login"
+
   @smoke @sanity
     #Test Case 2: Login User with correct email and password
   Scenario: User should login successfully with correct email and password
-    Given I am on homepage and verify the homepage URL
-    When I click on header menu option signup "Signup / Login"
     Then I should see the login page text "Login to your account"
     And I enter "priya00@gmail.com" email and "Priya@7874" password for login
     And I click on button "Login"
@@ -21,8 +23,6 @@ Feature: As a user,
   @sanity
     #Test Case 3: Login User with incorrect email and password
   Scenario: User should login successfully with correct email and password
-    Given I am on homepage and verify the homepage URL
-    When I click on header menu option signup "Signup / Login"
     Then I should see the login page text "Login to your account"
     And I enter "ravi@gmail.com" email and "Ravina@123" password for login
     And I click on button "Login"
@@ -31,8 +31,6 @@ Feature: As a user,
   @smoke @sanity
 #  Test Case 4: Logout User
   Scenario: I should logout successfully
-    Given I am on homepage and verify the homepage URL
-    When I click on header menu option signup "Signup / Login"
     Then I should see the login page text "Login to your account"
     And I enter "priya00@gmail.com" email and "Priya@7874" password for login
     And I click on button "Login"
@@ -43,8 +41,6 @@ Feature: As a user,
   @sanity
     # Test Case 16: Place Order: Login before Checkout
   Scenario: User should place the order : Login before checkout
-    Given I am on homepage and verify the homepage URL
-    When I click on header menu option Signup "Signup / Login"
     And I enter "priya00@gmail.com" email and "Priya@7874" password for login
     And I click on button "Login"
     Then I should see the text "Logged in as " "Rriya"

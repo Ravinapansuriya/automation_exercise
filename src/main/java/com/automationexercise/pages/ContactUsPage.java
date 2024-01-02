@@ -3,6 +3,7 @@ package com.automationexercise.pages;
 import com.automationexercise.utility.Utility;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -73,12 +74,15 @@ public class ContactUsPage extends Utility {
         log.info("Uploading file :" + uploadFile.toString());
     }
 
-    public void clickOnSubmitButton() {
-        clickOnElement(subject);
-        log.info("Clicking on submit button" + submitButton.toString());
+    public void clickOnSubmitButton(){
+        WebElement element = submitButton;
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", element);
+        log.info("Clicking on submit button: " + submitButton.toString());
     }
 
     public void acceptPopupMessage(){
+        switchToAlert();
         acceptAlert();
         log.info("Accepting the alert : ");
     }

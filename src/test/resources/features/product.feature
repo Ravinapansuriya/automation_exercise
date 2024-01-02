@@ -10,10 +10,12 @@ Feature: As a user,
   I should add review on product
   I should add to cart from recommended items
 
+  Background:
+    Given I am on homepage and verify the homepage URL
+
   @smoke @sanity
 #  Test Case 8: Verify All Products and product detail page
   Scenario: User should verify all products and product detail page
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Product "Products"
     Then I should see text "ALL PRODUCTS" on product page
     And I click on view product of first product "Blue Top"
@@ -28,7 +30,6 @@ Feature: As a user,
   @smoke @sanity
 #  Test Case 9: Search Product
   Scenario: User should search the product
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Product "Products"
     Then I should see text "ALL PRODUCTS" on product page
     And Enter product name "Blue Top" in search input
@@ -39,7 +40,6 @@ Feature: As a user,
   @smoke @sanity
 #  Test Case 12: Add Products in Cart
   Scenario: User should add the product into cart
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Product "Products"
     And I add product "Blue Top" to the cart
     And I click Continue Shopping button
@@ -47,14 +47,11 @@ Feature: As a user,
     And I click View Cart button
     Then Verify product "Blue Top"
 #    Then Verify product "Men Tshirt"
-#    Then Verify their prices
-#    Then Verify quantity
-#    Then Verify Total Price
+
 
 @sanity
 #  Test Case 13: Verify Product quantity in Cart
   Scenario: User should verify product quantity in cart
-    Given I am on homepage and verify the homepage URL
     When I click on view product of first product "Blue Top"
     And Verify the product details page and URL
     And Verify product name "Blue Top"
@@ -71,18 +68,16 @@ Feature: As a user,
   @sanity
 #  Test Case 17: Remove Products From Cart
   Scenario: User should remove product from cart
-    Given I am on homepage and verify the homepage URL
-    And I add product "Blue Top" to the cart
+    When I add product "Blue Top" to the cart
     And I click View Cart button
     And I should see the welcome text on shopping cart page "Shopping Cart"
     And I click on X button corresponding to particular product
-#    Then Verify that product is removed from the cart "Cart is empty!"
+    Then Verify that product is removed from the cart "Cart is empty!"
 
 @sanity
 #    Test Case 18: View Category Products
   Scenario: User should view category products
-    Given I am on homepage and verify the homepage URL
-    Then Verify that categories are visible on left side bar "CATEGORY"
+    When Verify that categories are visible on left side bar "CATEGORY"
     Then I click on "Women" category
     And I click on "Dress" in women category
     And I should see "WOMEN - DRESS PRODUCTS" page title
@@ -103,7 +98,6 @@ Feature: As a user,
 @sanity
 # Test Case 20: Search Products and Verify Cart After Login
   Scenario: User should search product and verify cart after login
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Product "Products"
     Then I should see text "ALL PRODUCTS" on product page
     And Enter product name "Blue Top" in search input
@@ -123,7 +117,6 @@ Feature: As a user,
 @sanity
 #  Test Case 21: Add review on product
   Scenario: User should add review on product
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Product "Products"
     Then I should see text "ALL PRODUCTS" on product page
     And I click on view product of first product "Blue Top"
@@ -136,7 +129,6 @@ Feature: As a user,
 @sanity
 #    Test Case 22: Add to cart from Recommended items
   Scenario: User should add to cart the products from Recommended items
-    Given I am on homepage and verify the homepage URL
     When I scroll down up to recommended items text
     Then I should see "RECOMMENDED ITEMS" text
     And I add to cart "Winter Top" product from recommended items

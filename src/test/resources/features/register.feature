@@ -7,10 +7,12 @@ Feature: As a user,
   I should Place Order: Login before Checkout
   I should verify address details in checkout page
 
+  Background:
+    Given I am on homepage and verify the homepage URL
+
   @smoke @sanity
     #Test Case 1: Register User
   Scenario: User should register successfully
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Signup "Signup / Login"
     Then I should see the login page text "New User Signup!"
     And I send name "Ravina" and email "ravi" to signup
@@ -30,7 +32,6 @@ Feature: As a user,
   @smoke @sanity
     #Test Case 5: Register User with existing email
   Scenario: User should see error message while register with existing email
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Signup "Signup / Login"
     Then I should see the login page text "New User Signup!"
     And I send name "Ravina" to name field in signup
@@ -41,7 +42,6 @@ Feature: As a user,
   @smoke @sanity
 #  Test Case 14: Place Order: Register while Checkout
   Scenario: User should place the order : Register while checkout
-    Given I am on homepage and verify the homepage URL
     When I add product "Blue Top" to the cart
     And I click View Cart button
     And I should see the welcome text on shopping cart page "Shopping Cart"
@@ -72,7 +72,6 @@ Feature: As a user,
   @smoke @sanity
 #  Test Case 15: Place Order: Register before Checkout
   Scenario: User should place the order : Register before checkout
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Signup "Signup / Login"
     And I send name "Ravina" and email "ravi" to signup
     And I click on button "Signup"
@@ -102,7 +101,6 @@ Feature: As a user,
   @sanity
 #  Test Case 23: Verify address details in checkout page
   Scenario: User should Verify address details in checkout page
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Signup "Signup / Login"
     And I send name "Ravina" and email "ravi" to signup
     And I click on button "Signup"

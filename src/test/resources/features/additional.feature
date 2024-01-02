@@ -9,10 +9,12 @@ Feature: As a user,
   I should scroll down and scroll up using Arrow button at bottom right corner
   I should scroll down and scroll up without Arrow button
 
+  Background:
+    Given I am on homepage and verify the homepage URL
+
   @sanity
 #Test Case 6: Contact Us Form
   Scenario: User should log the contact us form
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Contact us "Contact us"
     Then I should see welcome text on contact us page "GET IN TOUCH"
     And I enter "Ravina" name to name field
@@ -29,14 +31,12 @@ Feature: As a user,
   @sanity
 #  Test Case 7: Verify Test Cases Page
   Scenario: User should verify test cases page
-    Given I am on homepage and verify the homepage URL
     When I click on header menu option Test cases "Test Cases"
     Then I am on text cases page and verify the test-cases URL "https://automationexercise.com/test_cases"
 
   @sanity
 #  Test Case 10: Verify Subscription in home page
   Scenario: User should verify the subscription in home page
-    Given I am on homepage and verify the homepage URL
     When I scroll down to subscription
     Then Verify the text "SUBSCRIPTION"
     And I enter email address in input "ravina@gmail.com"
@@ -46,7 +46,6 @@ Feature: As a user,
   @sanity
 #  Test Case 11: Verify Subscription in Cart page
   Scenario: User should verify the subscription in cart page
-    Given I am on homepage and verify the homepage URL
     And I click on header menu option Cart "Cart"
     When I scroll down to subscription
     Then Verify the text "SUBSCRIPTION"
@@ -57,7 +56,6 @@ Feature: As a user,
   @sanity
 #  Test Case 24: Download Invoice after purchase order
   Scenario: User should Download Invoice after purchase order
-    Given I am on homepage and verify the homepage URL
     When I add product "Blue Top" to the cart
     And I click View Cart button
     And I should see the welcome text on shopping cart page "Shopping Cart"
@@ -90,7 +88,6 @@ Feature: As a user,
   @sanity
 # Test Case 25: Verify Scroll Up using 'Arrow' button and Scroll Down functionality
   Scenario: User should scroll down and scroll up using Arrow button at bottom right corner
-    Given I am on homepage and verify the homepage URL
     When I scroll down to subscription
     Then Verify the text "SUBSCRIPTION"
     And I Click on arrow at bottom right side to move upward
@@ -99,7 +96,6 @@ Feature: As a user,
   @sanity
 # Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functionality
   Scenario: User should Scroll Up without 'Arrow' button and Scroll Down functionality
-    Given I am on homepage and verify the homepage URL
     When I scroll down to subscription
     Then Verify the text "SUBSCRIPTION"
     And Scroll up page to top

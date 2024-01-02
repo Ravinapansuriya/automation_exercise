@@ -222,8 +222,9 @@ public class HomePage extends Utility {
         }
     }
     public void clickOnBottomRightArrowButton() {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", bottomRightArrowButton);
         log.info("Clicking on bottom right corner arrow button : " + bottomRightArrowButton.toString());
-        clickOnElement(bottomRightArrowButton);
     }
 
     public String getFullFledgedText() {
